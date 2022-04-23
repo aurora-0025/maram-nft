@@ -75,10 +75,10 @@ const MainMint: React.FC<Props> = ({accounts})=> {
                 try {
                     setLoading({loading: true, msg: "Awaiting Transaction"})
                     const response = await contract.mint(accounts[0], mintAmount, {
-                        // value: ethers.utils.parseEther(`${mintAmount}`),
+                        value: ethers.utils.parseEther(`${mintAmount}`),
     
                         // Development price
-                        value: 0,
+                        // value: 0,
                       });
                     response.wait().then((txn: any)=>{
                         console.log(txn)
