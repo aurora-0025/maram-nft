@@ -1,10 +1,11 @@
 import Image from "next/image";
-import React, { Dispatch, SetStateAction, useEffect, useState } from "react"
-import Web3 from "web3";
+import React, {useEffect, useState } from "react"
 import Install from "./Install";
 import MainMint from "./MainMint";
-import getWindowDimensions from '../hooks/getWindowDimensions';
+import getWindowDimensions from "../../hooks/getWindowDimensions";
 import { useInView } from "react-intersection-observer";
+
+const hasWindow = typeof window !== 'undefined';
 
 const Mint:React.FC = () =>{
     const [accounts, setAccounts] = useState([]);
@@ -61,6 +62,8 @@ const Mint:React.FC = () =>{
 
 
    async function connectAccount() {
+    if (typeof window !== "undefined") {
+        // Client-side-only code
         if(window.ethereum) { 
             try {
                 const accounts = await window.ethereum.request({
@@ -75,6 +78,7 @@ const Mint:React.FC = () =>{
 
         }
         else setIsInstalled(false);
+      }
    }
     return (
     <div>    
@@ -92,7 +96,7 @@ const Mint:React.FC = () =>{
                         </div>
                     </section>
                     {isConnected? (
-            <MainMint accounts={accounts} setAccounts={setAccounts}/> 
+            <MainMint accounts={accounts}/> 
         ):( 
             <div>
                 {IsInstalled? (

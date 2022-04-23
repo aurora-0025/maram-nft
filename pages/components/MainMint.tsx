@@ -1,10 +1,9 @@
 import React, { Dispatch, SetStateAction, useEffect, useState } from "react"
-import {ethers, BigNumber} from "ethers";
+import {ethers} from "ethers";
 import config from "../../config.json";
 
 interface Props  {
     accounts: string[];
-    setAccounts: Dispatch<SetStateAction<never[]>>
 }
 
 interface Loading {
@@ -12,7 +11,10 @@ interface Loading {
     msg: string
 }
 
-const MainMint: React.FC<Props> = ({accounts, setAccounts})=> {
+const hasWindow = typeof window !== 'undefined';
+
+
+const MainMint: React.FC<Props> = ({accounts})=> {
 
     const [mintAmount, setMintAmount] = useState<number>(1);
     const [plusDisabled, setPlusDisabled] = useState<boolean>(false);
@@ -23,26 +25,31 @@ const MainMint: React.FC<Props> = ({accounts, setAccounts})=> {
     const [loading, setLoading] = useState<Loading>({loading: true, msg: "Loading"});
 
     const fetchData = async () => {
-        const provider = new ethers.providers.Web3Provider(window.ethereum);
-        const signer = provider.getSigner();
-        const contract= new ethers.Contract(
-            config.MARAM_TOKEN_ADDRESS,
-            config.abi,
-            signer
-        );
-        setContract(contract);
-        const balance = await provider.getBalance(accounts[0]);
-        setBalance(ethers.utils.formatEther(balance));
-        const minted =  await contract.totalSupply()
-        setMintedAmount(minted.toString())
-      }
+            if(hasWindow) {
+            // Client-side-only code
+            const provider = new ethers.providers.Web3Provider(window.ethereum);
+            const signer = provider.getSigner();
+            const contract= new ethers.Contract(
+                config.MARAM_TOKEN_ADDRESS,
+                config.abi,
+                signer
+            );
+            setContract(contract);
+            const balance = await provider.getBalance(accounts[0]);
+            setBalance(ethers.utils.formatEther(balance));
+            const minted =  await contract.totalSupply()
+            setMintedAmount(minted.toString())
+            }
+          }
 
     useEffect(()=>{
+    if(hasWindow){
         if (window.ethereum) {
             setLoading({loading: true, msg: "Loading"});
             fetchData().then(()=>setLoading({loading: false, msg: "Loading"})).catch((error)=>console.log(error))
         }
-    }, [window.ethereum])
+    }
+    }, [hasWindow])
 
     useEffect(()=>{
         setPlusDisabled(Boolean(mintAmount == 10));

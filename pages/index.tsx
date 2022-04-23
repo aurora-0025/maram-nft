@@ -3,7 +3,7 @@ import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import { useInView } from "react-intersection-observer";
 import { useEffect, useState } from 'react';
-import getWindowDimensions from './hooks/getWindowDimensions';
+import getWindowDimensions from '../hooks/getWindowDimensions';
 import Link from 'next/link';
 
 const Home: NextPage = () => {  
