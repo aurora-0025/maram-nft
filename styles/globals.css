@@ -1,0 +1,95 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@700&display=swap');
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-style: normal;
+  font-weight: 700;
+  font-family: 'Syne', sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.mintButton {
+  background: #FEFA02;
+  padding: 0.5em 1em;
+  font-weight: 700;
+  margin-top: 10px;
+  box-shadow: 5px 5px #000, 0 0 20px 5px #daff0a, 0px 4px 20px rgba(0, 0, 0, 0.25);
+  color:#000;
+  border-radius: 8px;
+  transition: 0.5s;
+}
+
+.mintButton:hover {
+  transform: scale(102%);
+}
+
+@-webkit-keyframes rotating {
+  from{
+      -webkit-transform: rotate(0deg);
+  }
+  to{
+      -webkit-transform: rotate(360deg);
+  }
+}
+
+  .image-container {
+    width: 100%;
+  }
+
+  .image-container > div {
+    position: unset !important;
+  }
+
+  .image {
+    object-fit: contain;
+    width: 100% !important;
+    position: relative !important;
+    height: unset !important;
+  }
+
+.rotating {
+  -webkit-animation: rotating 10s linear infinite;
+}
+
+.marquee {
+  white-space: nowrap;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.marquee > div  {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: marquee 40s linear infinite;
+}
+
+.marquee > p {
+  display: inline-block;
+  animation: marquee 40s linear infinite;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}

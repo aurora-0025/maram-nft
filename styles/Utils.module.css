@@ -1,0 +1,14 @@
+.horizontalScrollContainer {
+    display: flex;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+    overflow-x: auto;
+}
+
+.horizontalScrollContainer > div:first-child {
+    margin-left: auto;
+}
+
+.horizontalScrollContainer > div:last-child {
+    margin-right: auto;
+}
