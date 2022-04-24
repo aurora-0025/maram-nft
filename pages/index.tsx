@@ -86,6 +86,7 @@ const Home: NextPage = () => {
                 anchor?.scrollIntoView({ behavior: 'smooth', block: 'center' })}}> About Us</a>
               <a className='mx-4 py-5 xl:py-7 cursor-pointer' onClick={() => {const anchor = document.querySelector('#contact')
                 anchor?.scrollIntoView({ behavior: 'smooth', block: 'center' })}}> Contact Us</a>
+              <Link href="/collection" passHref><a className='mx-4 py-5 xl:py-7 cursor-pointer'>Collection</a></Link>
               </div>
               <button className='bg-black px-3 py-5 xl:py-7 text-white' onClick={() => {const anchor = document.querySelector('#contribute')
                 anchor?.scrollIntoView({ behavior: 'smooth', block: 'center' })}}>CONTRIBUTE</button>
