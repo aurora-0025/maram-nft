@@ -1,6 +1,6 @@
 <h1 align="center">Team ptrioFA</h1>
 
-## MARAM <a href="https://hack36.com"> <img src="https://cutt.ly/BuiltAtHack36" height=24px> </a>
+## MARAM
 
 ![banner_2](https://user-images.githubusercontent.com/78461388/156891440-ac4ded6b-d155-48f7-964b-c66d9c7ca6f1.png)
 
@@ -41,6 +41,3 @@
 * [ANUGRAH TOBY](https://github.com/anugrahtoby)
 * [VINU B KURUP](https://github.com/hipster16)
 
-
-### Made at:
-<a href="https://hack36.com"> <img src="https://cutt.ly/BuiltAtHack36" height=24px> </a>
